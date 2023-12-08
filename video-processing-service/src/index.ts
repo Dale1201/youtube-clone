@@ -9,7 +9,7 @@ app.use(express.json());
 // });
 
 app.post("/process-video", (req, res) => {
-  console.log(req.body)
+  console.log(req.body);
   const inputFilePath = req.body.inputFilePath;
   const outputFilePath = req.body.outputFilePath;
 
@@ -20,7 +20,7 @@ app.post("/process-video", (req, res) => {
   ffmpeg(inputFilePath)
     .outputOptions("-vf", "scale=-1:360")
     .on("end", () => {
-      return res.status(200).send("Processing finished successfully");
+      res.status(200).send("Processing finished successfully");
     })
     .on("error", (err) => {
       console.log(err);
